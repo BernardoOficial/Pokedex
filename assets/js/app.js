@@ -1,10 +1,14 @@
 import { fetchPokemon } from "./fetchPokemon.js";
 import { criarCardPokemon } from "./CriarCardPokemon.js";
 
-// window.onload(() => {
+window.onload = () => setTimeout(loaderAplication, 4000);
 
-//     const loader = document.querySelector('[data-loader]');
-// })
+const loaderAplication = () => {
+
+    const loader = document.querySelector('[data-loader]');
+    loader.remove();
+    exibirPokemons();
+}
 
 const inputSearch = document.querySelector('[data-search]');
 
@@ -53,5 +57,3 @@ const exibirPokemons = async () => {
 
     inputSearch.addEventListener('input', (evento) => searchPokemon(evento, listaPokemonsChildren));
 }
-
-exibirPokemons();

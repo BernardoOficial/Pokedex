@@ -23,7 +23,7 @@
 
         <div class="container">
 
-            <section class="pokemon__content">
+            <section class="pokemon__header">
 
                 <h1 class="pokemon__content__title">Pokemon</h1>
 
@@ -38,7 +38,17 @@
 
             <section class="pokemon__content">
 
-                <div class="loader" data-loader></div>
+                <div class="loader" data-loader>
+                    <!-- Animação Carregamento de Água -->
+                    <!-- <lottie-player src="https://assets4.lottiefiles.com/datafiles/ORpUnaV6z0mJ17E/data.json" background="transparent"
+                        speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player> -->
+                        
+                    <!-- Animação Pokebola-->
+                    <lottie-player src="./assets/images/pokebola.json" background="transparent" speed="1"
+                        style="width: 250px; height: 250px; fill: #444444; color: #444444;" loop autoplay></lottie-player>
+                    <!-- <lottie-player src="https://assets1.lottiefiles.com/temp/lf20_Tw0dyZ.json" background="transparent" speed="1"
+                        style="width: 250px; height: 250px; fill: #444444; color: #444444;" loop autoplay></lottie-player> -->
+                </div>
                 
                 <ul class="pokemon__content__list" data-list-pokemons></ul>
 
@@ -48,9 +58,8 @@
 
     </section>
 
-
-
     <script type="module" src="./assets/js/app.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 
 </html>
