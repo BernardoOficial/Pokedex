@@ -27,8 +27,19 @@
 
                 <h1 class="pokemon__content__title">Pokemon</h1>
 
-                <div class="loader" data-loader></div>
+                <section class="pokemon__search" data-search>
+                    <div class="pokemon__search__campo">
+                        <input class="pokemon__input" type="text" name="pokemon-nome" id="pokemon" required>
+                        <label class="pokemon__label" for="pokemon">Procure por um Pokemon!</label>
+                    </div>
+                </section>
 
+            </section>
+
+            <section class="pokemon__content">
+
+                <div class="loader" data-loader></div>
+                
                 <ul class="pokemon__content__list" data-list-pokemons></ul>
 
             </section>

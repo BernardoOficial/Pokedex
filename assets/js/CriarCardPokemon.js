@@ -9,6 +9,7 @@ const criarCardPokemon = (pokemons) => {
         elementos.img.setAttribute("src", pokemon.imagem);
         elementos.h2.textContent = pokemon.nome
         elementos.p.textContent = pokemon.tipo
+        elementos.li.setAttribute('data-pokemon-name', pokemon.nome);
 
         listaPokemons.appendChild(elementos.li);
     })

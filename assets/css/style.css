@@ -20,7 +20,7 @@ html {
 h1, h2, h3 {
     font-family: 'Fredoka One', cursive;
 }
-p, span, a, input {
+p, span, a, input, label {
     font-family: 'Poppins', sans-serif;
 }
 
@@ -38,6 +38,8 @@ body {
     max-width: 1300px;
 }
 .pokemon__content {
+    margin-top: 20px;
+    position: relative;
     text-align: center;
 }
 .pokemon__content__title {
@@ -49,7 +51,6 @@ body {
     display: inline-block;
 }
 .pokemon__content__title {
-    margin-top: 20px;
     color: var(--preto-um);
     font-size: 6rem;
     line-height: 6rem;
@@ -71,6 +72,67 @@ body {
     background: rgb(185,36,34);
     background: linear-gradient(90deg, rgba(185,36,34,1) 0%, rgba(255,175,0,1) 32%, rgba(65,199,23,1) 69%, rgba(0,252,241,1) 100%);
 }
+.pokemon__search {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    bottom: 40px;
+    margin: auto 0;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pokemon__search__campo {
+    position: relative;
+}
+.pokemon__input {
+    border: 1px solid var(--preto-um);
+    border-radius: 5px;
+    outline: none;
+    padding: 8px 10px;
+
+    background-color: transparent;
+    width: 250px;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    transition: 100ms linear;
+    transition-delay: 300ms;
+}
+.pokemon__input:focus,
+.pokemon__input:valid {
+    transition: 100ms linear;
+    box-shadow: -20px 5px 0 var(--fogo),
+                -20px -20px 0 var(--fogo),
+                20px -20px 0 var(--agua),
+                20px 10px 0 var(--planta);
+}
+.pokemon__label {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 16px;
+
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    letter-spacing: 1px;
+    transition: 0.3s linear;
+}
+.pokemon__input:focus ~ .pokemon__label,
+.pokemon__input:valid ~ .pokemon__label {
+    transition-delay: 200ms;
+    position: absolute;
+    top: -15px;
+    left: 0;
+    height: 12px;
+    margin: initial;
+
+    font-size: 1rem;
+    line-height: 1.2rem;
+    color: #ffffff;
+}
 .pokemon__content__list {
     margin-top: 50px;
 
@@ -87,6 +149,9 @@ body {
     transition: 0.2s linear;
 
     box-shadow: 0 0 5px 1px #555555;
+}
+.pokemon__content__list__item--hide {
+    display: none;
 }
 .pokemon__content__list__item:hover {
     color: #ffffff;

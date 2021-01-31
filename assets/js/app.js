@@ -6,6 +6,22 @@ import { criarCardPokemon } from "./CriarCardPokemon.js";
 //     const loader = document.querySelector('[data-loader]');
 // })
 
+const inputSearch = document.querySelector('[data-search]');
+
+const searchPokemon = (evento, listaPokemonsChildren) => {
+
+    const pokemonSearch = evento.target.value.toLowerCase();
+    const resultadoSearch = listaPokemonsChildren.filter(pokemon => 
+            pokemon.dataset.pokemonName.includes(pokemonSearch));
+
+    listaPokemonsChildren.forEach(pokemon => pokemon.classList.add("pokemon__content__list__item--hide"))
+
+    if (resultadoSearch.length > 0) {
+        resultadoSearch.forEach(pokemon => pokemon.classList.remove("pokemon__content__list__item--hide"));
+    }
+    
+}
+
 const typePokemon = (arrayType) => {
 
     let type = [];
@@ -32,6 +48,10 @@ const exibirPokemons = async () => {
     })
 
     criarCardPokemon(arrayPokemonsInfo);
+
+    const listaPokemonsChildren = Array.from(document.querySelector('[data-list-pokemons]').children);
+
+    inputSearch.addEventListener('input', (evento) => searchPokemon(evento, listaPokemonsChildren));
 }
 
 exibirPokemons();
