@@ -1,16 +1,40 @@
 import { fetchPokemon } from "./fetchPokemon.js";
 import { criarCardPokemon } from "./CriarCardPokemon.js";
 
-window.onload = () => setTimeout(loaderAplication, 4000);
+const inputSearch = document.querySelector('[data-search]');
 
-const loaderAplication = () => {
+window.addEventListener('load', async () => {
 
+    const arrayPokemons = await fetchPokemon();
+
+    const arrayPokemonsInfo = arrayPokemons.map((pokemon) => {
+
+        return {
+            id: pokemon.id,
+            nome: pokemon.name,
+            tipo: typePokemon(pokemon.types),
+            imagem: pokemon.sprites.other['official-artwork'].front_default
+        }
+    })
+
+    setTimeout(() => {
+        loaderAplication(arrayPokemonsInfo)
+    }, 4000);
+});
+
+const loaderAplication = (arrayPokemonsInfo) => {
+
+    // Remover loader
     const loader = document.querySelector('[data-loader]');
     loader.remove();
-    exibirPokemons();
-}
 
-const inputSearch = document.querySelector('[data-search]');
+    // Renderizar Pokemons
+    criarCardPokemon(arrayPokemonsInfo);
+
+    // Search Pokemons
+    const listaPokemonsChildren = Array.from(document.querySelector('[data-list-pokemons]').children);
+    inputSearch.addEventListener('input', (evento) => searchPokemon(evento, listaPokemonsChildren));
+}
 
 const searchPokemon = (evento, listaPokemonsChildren) => {
 
@@ -35,25 +59,4 @@ const typePokemon = (arrayType) => {
     type = type.join(", ");
 
     return type;
-}
-
-const exibirPokemons = async () => {
-
-    const arrayPokemons = await fetchPokemon();
-
-    const arrayPokemonsInfo = arrayPokemons.map((pokemon) => {
-
-        return {
-            id: pokemon.id,
-            nome: pokemon.name,
-            tipo: typePokemon(pokemon.types),
-            imagem: pokemon.sprites.other['official-artwork'].front_default
-        }
-    })
-
-    criarCardPokemon(arrayPokemonsInfo);
-
-    const listaPokemonsChildren = Array.from(document.querySelector('[data-list-pokemons]').children);
-
-    inputSearch.addEventListener('input', (evento) => searchPokemon(evento, listaPokemonsChildren));
 }
